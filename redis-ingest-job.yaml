@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: redis-ingest-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: redis-ingest
+        image: sumanth17121988/redis-ingest:latest  # Use the pushed image
+        imagePullPolicy: Always
+      restartPolicy: Never
+  backoffLimit: 3  # Retry up to 3 times if it fails
+
